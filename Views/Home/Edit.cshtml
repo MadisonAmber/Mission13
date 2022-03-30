@@ -4,34 +4,34 @@
 @model Bowler
 
 <form method="POST" asp-controller="Home" asp-action="Add">
-    <div class="form-group">
+    <div class="form-group mb-1">
         <input type="hidden" asp-for="@Model.BowlerID" />
 
-        <label asp-for="@Model.BowlerFirstName"></label>
+        <label asp-for="@Model.BowlerFirstName">First Name:</label>
         <input class="form-control" asp-for="@Model.BowlerFirstName" />
 
-        <label asp-for="@Model.BowlerMiddleInit"></label>
+        <label asp-for="@Model.BowlerMiddleInit">Middle Initial:</label>
         <input class="form-control" asp-for="@Model.BowlerMiddleInit" />
 
-        <label asp-for="@Model.BowlerLastName"></label>
+        <label asp-for="@Model.BowlerLastName">Last Name:</label>
         <input class="form-control" asp-for="@Model.BowlerLastName" />
     </div>
-    <div class="form-group">
-        <label asp-for="@Model.BowlerAddress"></label>
+    <div class="form-group mb-1">
+        <label asp-for="@Model.BowlerAddress">Address:</label>
         <input class="form-control" asp-for="@Model.BowlerAddress" />
 
-        <label asp-for="@Model.BowlerCity"></label>
+        <label asp-for="@Model.BowlerCity">City:</label>
         <input class="form-control" asp-for="@Model.BowlerCity" />
 
-        <label asp-for="@Model.BowlerState"></label>
+        <label asp-for="@Model.BowlerState">State:</label>
         <input class="form-control" asp-for="@Model.BowlerState" />
 
-        <label asp-for="@Model.BowlerZip"></label>
+        <label asp-for="@Model.BowlerZip">Zipcode:</label>
         <input class="form-control" asp-for="@Model.BowlerZip" />
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.BowlerPhoneNumber"></label>
+        <label asp-for="@Model.BowlerPhoneNumber">Phone Number:</label>
         <input class="form-control" asp-for="@Model.BowlerPhoneNumber" />
 
         <label asp-for="@Model.TeamID">Team</label>

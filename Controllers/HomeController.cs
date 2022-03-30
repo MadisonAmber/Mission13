@@ -40,7 +40,7 @@ namespace Mission13.Controllers
                     
                 } else
                 {
-                    ViewBag.Heading = "No Bowlers Found For this Team.";
+                    ViewBag.Heading = "No Bowlers Found For This Team.";
                 }
             }
 
