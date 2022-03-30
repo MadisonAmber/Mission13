@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Bowler>
+
+<h1>@ViewBag.Heading</h1>
+
+<div style="display: flex; justify-content:space-between">
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filter
+        </button>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item @(ViewBag.SelectedTeam == 0 ? "selected" : "")" asp-controller="Home" asp-action="Index" asp-route-teamid="0">View All</a>
+            @foreach (Team t in ViewBag.Teams)
+            {
+                <a class="dropdown-item @(ViewBag.SelectedTeam == t.TeamID ? "selected" : "")" asp-controller="Home" asp-action="Index" asp-route-teamid="@t.TeamID">@t.TeamName</a>
+            }
+        </div>
+    </div>
+
+    <a asp-controller="Home" asp-action="Add" class="btn btn-primary">Add Bowler</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Team</th>
+            <th rowspan="2"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Bowler b in Model)
+        {
+        <tr>
+            <th scope="row">@b.BowlerID</th>
+            <td>@b.BowlerFirstName @b.BowlerMiddleInit @b.BowlerLastName</td>
+            <td>@b.BowlerAddress @b.BowlerCity, @b.BowlerState, @b.BowlerZip</td>
+            <td>@b.BowlerPhoneNumber</td>
+            <td><a asp-controller="Home" asp-action="Index" asp-route-teamid="@b.TeamID">@b.Team.TeamName</a></td>
+            <td>
+                <form method="POST" asp-controller="Home" asp-action="Delete">
+                    <input asp-for="@b.BowlerID" type="hidden"/>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-bowlerid="@b.BowlerID">Edit</a>
+            </td>
+        </tr>
+        }
+
+
+    </tbody>
+</table>
